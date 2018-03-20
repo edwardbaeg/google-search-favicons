@@ -1,18 +1,24 @@
-const ICON_SRC = "https://www.google.com/s2/favicons?domain=";
-// var $favicon = $('<img>', {id:'icon', src: ICON_SRC, width: "16", height: "16"}).css("image-rendering", "auto");
+const GOOG_SRC = 'https://www.google.com/s2/favicons?domain=';
 
-function getDomain(string) {
-  var url = new URL(string);
-  return url.hostname;
+function getFaviconSRC(site) {
+  var url = new URL(site);
+  return GOOG_SRC + url.hostname;
+}
+
+function createFavicon(searchResult) {
+  var resultURL = $(searchResult).find('a:first').attr('href');
+  var src = getFaviconSRC(resultURL);
+  return $('<img>', {
+      class:'favicon',
+      src: src,
+      width: '16',
+      height: '16'
+    });
 }
 
 $(document).ready(function() {
-  // var $text = $("<div></div>").text("Test").css({"color": "red", "display": "inline-block", "position": "relative"});
-  // $("h3.r").prepend($favicon);
-  $("h3.r").each(function() {
-    var url = $(this).find("a").attr("href");
-    var site = ICON_SRC + getDomain(url);
-    var $favicon = $('<img>', {id:'icon', src: site, width: "16", height: "16"}).css("image-rendering", "auto");
+  $("div.rc > h3").each(function() {
+    var $favicon = createFavicon(this);
     $(this).prepend($favicon);
   });
 });
