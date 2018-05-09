@@ -9,11 +9,11 @@ function createFavicon(searchResult) {
   var resultURL = $(searchResult).find('a:first').attr('href');
   var src = getFaviconSRC(resultURL);
   return $('<img>', {
-      class:'favicon',
-      src: src,
-      width: '16',
-      height: '16'
-    });
+    class:'favicon',
+    src: src,
+    width: '16',
+    height: '16'
+  });
 }
 
 $(document).ready(function() {
