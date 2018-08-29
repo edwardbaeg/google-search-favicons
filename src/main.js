@@ -17,7 +17,7 @@ function createFavicon(searchResult) {
 }
 
 $(document).ready(function() {
-  $("div.rc > h3").each(function() {
+  $('div.r').each(function() {
     var $favicon = createFavicon(this);
     $(this).prepend($favicon);
   });
