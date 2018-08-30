@@ -17,8 +17,8 @@ const createFavicon = (searchResult) => {
 };
 
 $(document).ready(() => {
-  $('div.r').each(function() {
+  $('div.rc').each(function() {
     const $favicon = createFavicon(this);
-    $(this).prepend($favicon);
+    $(this).find('a:first').prepend($favicon);
   });
 });
