@@ -211,7 +211,7 @@
       "*://www.google.cat/search*",
       "*://encrypted.google.com/*"
     ],
-    "js":["lib/jquery-3.3.1.min.js", "main.js"],
+    "js":["main.js"],
     "css":["styles.css"],
     "run_at":"document_end"
   }]
