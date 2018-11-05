@@ -16,19 +16,16 @@ const getFaviconSRC = (site) => {
  * @returns {HTMLNode}
  */
 const createFavicon = (searchResult) => {
-  const resultURL = $(searchResult).find('a:first').attr('href');
-  const src = getFaviconSRC(resultURL);
-  return $('<img>', {
-    src,
-    class:'favicon',
-    width: '16',
-    height: '16'
-  });
+  const resultURL = searchResult.querySelector('a').getAttribute('href');
+  const faviconSrc = getFaviconSRC(resultURL);
+  const IMG = new Image(16, 16);
+  IMG.src = faviconSrc;
+  IMG.classList.add('favicon');
+  return IMG;
 };
 
-$(document).ready(() => {
-  $('div.rc').each(function() {
-    const $favicon = createFavicon(this);
-    $(this).find('a:first').prepend($favicon);
-  });
+document.querySelectorAll('div .rc').forEach(div => {
+  const faviconIMG = createFavicon(div);
+  div.querySelector('a').prepend(faviconIMG);
 });
+
