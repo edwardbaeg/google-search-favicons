@@ -19,7 +19,7 @@ const getFaviconURL = (div) => {
 const createFavicon = (src) => {
   const faviconIMG = new Image(16, 16);
   faviconIMG.src = src;
-  faviconIMG.classList.add('favicon');
+  faviconIMG.style.marginRight = '5px';
   return faviconIMG;
 };
 

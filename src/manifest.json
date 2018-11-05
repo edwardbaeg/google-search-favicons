@@ -212,7 +212,6 @@
       "*://encrypted.google.com/*"
     ],
     "js":["main.js"],
-    "css":["styles.css"],
     "run_at":"document_end"
   }]
 }
