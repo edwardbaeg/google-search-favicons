@@ -1,31 +1,35 @@
 /**
  * Get favicon url
- * @param {string} site The site url
+ * @param {HTMLNode} div The search result div
  * @returns {string} The favicon url
  */
-const getFaviconSRC = (site) => {
-  const GOOG_SRC = 'https://www.google.com/s2/favicons?domain=';
-  const url = new URL(site);
-  return GOOG_SRC + url.hostname;
+const getFaviconURL = (div) => {
+  const GOOGLE_SRC = 'https://www.google.com/s2/favicons?domain=';
+
+  const site = div.querySelector('a').getAttribute('href');
+  const { hostname } = new URL(site);
+  return GOOGLE_SRC + hostname;
 };
 
 /**
  * Create favicon img element
- * @param {HTMLNode} searchResult The result link
+ * @param {string} src The favicon url
  * @returns {HTMLNode}
  */
-const createFavicon = (searchResult) => {
-  const resultURL = searchResult.querySelector('a').getAttribute('href');
-  const faviconSrc = getFaviconSRC(resultURL);
-  const IMG = new Image(16, 16);
-  IMG.src = faviconSrc;
-  IMG.classList.add('favicon');
-  return IMG;
+const createFavicon = (src) => {
+  const faviconIMG = new Image(16, 16);
+  faviconIMG.src = src;
+  faviconIMG.classList.add('favicon');
+  return faviconIMG;
 };
 
+/**
+ * Adds favicons to all google search results
+ */
 const addFavicons = (() => {
   document.querySelectorAll('div .rc').forEach(div => {
-    const faviconIMG = createFavicon(div);
+    const faviconURL = getFaviconURL(div);
+    const faviconIMG = createFavicon(faviconURL);
     div.querySelector('a').prepend(faviconIMG);
   });
 })();
