@@ -31,5 +31,6 @@ const addFavicons = (() => {
     const faviconURL = getFaviconURL(div);
     const faviconIMG = createFavicon(faviconURL);
     div.querySelector('a').prepend(faviconIMG);
+    div.querySelector('a').style.whiteSpace = 'nowrap';
   });
 })();

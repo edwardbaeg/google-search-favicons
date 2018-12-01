@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Google Search Favicons",
-  "version": "0.4",
+  "version": "1.0",
   "description": "Adds favicons next to Google search results",
 
   "icons": {
