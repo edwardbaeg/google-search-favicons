@@ -25,10 +25,23 @@ const createFavicon = (src) => {
 };
 
 /**
+* Check if Google has rolled out native favicons
+*  for the user's favicons
+*/
+const hasNativeFavicons = (el) => {
+  const link = el.querySelector('a');
+  const target = link.querySelector('img');
+  return !!target;
+}
+
+/**
  * Add favicons to Google search results
  */
 const addFavicons = (() => {
   document.querySelectorAll('div .rc').forEach(div => {
+    const test = hasNativeFavicons(div);
+    if (test) return;
+
     const faviconURL = getFaviconURL(div);
     const faviconIMG = createFavicon(faviconURL);
 
