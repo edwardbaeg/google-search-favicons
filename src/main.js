@@ -1,5 +1,5 @@
 const FAVICON_SIZE = 16;
-const FAVICON_MARGIN = 5;
+const FAVICON_MARGIN = 6;
 
 /**
  * Get favicon url
@@ -45,7 +45,7 @@ const addFavicons = (() => {
     const faviconURL = getFaviconURL(div);
     const faviconIMG = createFavicon(faviconURL);
 
-    const anchor = div.querySelector('a');
+    const anchor = div.querySelector('a h3');
     anchor.prepend(faviconIMG);
     anchor.style.whiteSpace = 'nowrap';
   });
