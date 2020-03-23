@@ -14,16 +14,20 @@ void function addFavicons() {
     const faviconSrc = FAVICON_API + hostname;
 
     // Create favicon <img> element
-    const el = new Image(FAVICON_SIZE, FAVICON_SIZE);
-    el.src = faviconSrc;
-    el.style.marginRight = FAVICON_MARGIN + 'px';
+    const imgEl = new Image(FAVICON_SIZE, FAVICON_SIZE);
+    imgEl.src = faviconSrc;
+    imgEl.style.marginRight = FAVICON_MARGIN + 'px';
 
+    // Get the search result display domain
     const anchorEl = res.querySelector('cite');
     anchorEl.style.display = 'flex';
     anchorEl.style.alignItems = 'center';
 
+    // Shift action menu to the right
     const actionMenuEl = res.querySelector('.action-menu');
     actionMenuEl && (actionMenuEl.style.marginLeft = FAVICON_SIZE + FAVICON_MARGIN + 'px');
-    anchorEl.prepend(el);
+
+    // Add favicon
+    anchorEl.prepend(imgEl);
   })
 }();
